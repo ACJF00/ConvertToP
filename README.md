@@ -10,4 +10,6 @@ This script converts plain text into HTML, wrapping each line in `<p>` tags, lin
 
 3. Run the script with the following command:
 
+```python3 text_to_html.py```
+
 4. The formatted result can be found in `destination.html`.
