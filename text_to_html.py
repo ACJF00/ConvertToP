@@ -1,3 +1,5 @@
+import re
+
 # Ouvrir le fichier source en mode lecture
 with open('article1.txt', 'r') as src_file:
   # Ouvrir le fichier de destination en mode écriture
@@ -29,6 +31,10 @@ with open('article1.txt', 'r') as src_file:
           new_line = '<p>' + stripped_line + '</p>\n'
         else:
           new_line = '\n'
+      # Remplacer les liens par des balises <a>
+      new_line = re.sub(r'(http[s]?://[^<]+|www\.[^<]+)', r'<a href="\1">\1</a>', new_line)
+      # Remplacer les adresses e-mail par des balises <a>
+      new_line = re.sub(r'(\S+@\S+[^<])', r'<a href="mailto:\1">\1</a>', new_line)
       # Écrire la nouvelle ligne dans le fichier de destination
       dest_file.write(new_line)
     # Si le fichier se termine par une liste, ajouter une balise </ul>
